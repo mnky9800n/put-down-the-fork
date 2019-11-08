@@ -5,6 +5,7 @@ import dash_html_components as html
 import pandas as pd
 from io import StringIO
 import requests
+# TODO : integrate bootstrap design library into layout
 
 markdown_text = '''
 # John's Food Diary
@@ -50,19 +51,20 @@ daily_calories.sort_index(inplace=True)
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
+app.title = 'Put down the fork!'
 
 app.layout = html.Div(children=[
-
+    # TODO : figure out how to print emoji (head should have utf-8)
     dcc.Markdown(children=markdown_text),
 
     html.H4(children='recent food'),
-    generate_table(df.iloc[-10:]),
+    generate_table(df.iloc[-10:]), # use only the most recent 10 items
     html.H1(children=''),
 
     html.Div(children='''
         Each point is the sum of the calories for the day. You can interact with the graph.
     '''),
-
+    # TODO : write a line graph function to replace this
     dcc.Graph(
         id='example-graph',
         figure={
@@ -79,9 +81,7 @@ app.layout = html.Div(children=[
     )
 ])
 
-# app = dash.Dash(__name__)
-# server = app.server
-# app.run_server(debug=True)
+
 if __name__ == '__main__':
     app.run_server(debug=True)
 
