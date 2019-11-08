@@ -1,1 +1,1 @@
-web: gunicorn calories-dashboard:server
+web: gunicorn app:server
