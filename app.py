@@ -172,6 +172,7 @@ footer = dbc.Container(
 
 # app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 app = dash.Dash(__name__, external_stylesheets=['assets/bootstrap.css'])
+server = app.server
 app.title = 'Put down the fork!'
 
 app.layout = html.Div([
