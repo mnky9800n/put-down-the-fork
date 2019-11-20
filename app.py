@@ -7,6 +7,9 @@ import pandas as pd
 from io import StringIO
 import requests
 from datetime import datetime, timedelta
+import matplotlib.pyplot as plt
+import numpy as np
+
 # TODO : integrate bootstrap design library into layout
 
 markdown_text = '''
@@ -37,6 +40,17 @@ df.set_index('Timestamp', inplace=True)
 daily_calories = df.resample('D').sum()
 daily_calories.columns = ['sum(calories)',]
 daily_calories.sort_index(inplace=True)
+
+#####
+# calendar
+# TODO : make a calendar function that is dynamic and isnt terrible like this one
+year_df = pd.date_range('1/1/2019', periods=365, freq='D')
+year_df = pd.DataFrame(index=year_df)
+test = year_df.join(daily_calories)
+test_series = pd.Series(test.values[:,0], index=test.index)
+fig, ax = plt.subplots(figsize=(15, 5))
+calmap.yearplot(test_series, year=2019, ax=ax, cmap='Reds', vmin=2000, vmax=3000)
+fig.savefig('assets/calendar.png', bbox_inches='tight', dpi=75)
 
 #####
 # functions
