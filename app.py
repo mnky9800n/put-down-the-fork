@@ -124,7 +124,8 @@ jumbotron = dbc.Jumbotron(
 )
 body = dbc.Container(
     [
-        dbc.Row([dbc.Col(
+        dbc.Row(
+            [dbc.Col(
             [
         dcc.Markdown("*Somedays I'm fat*"),
         dcc.Markdown("*Other days I'm thinner*"),
@@ -150,7 +151,12 @@ body = dbc.Container(
                         generate_calorie_graph(daily_calories),
                     ]
                     , md=7
-                ),
+                ),0
+            ]
+        ),
+        dbc.Row(
+            [
+                dbc.Col([html.Img(src='assets/calendar.png'),], md=12)
             ]
         )
     ],
