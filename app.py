@@ -9,6 +9,7 @@ import requests
 from datetime import datetime, timedelta
 import matplotlib.pyplot as plt
 import numpy as np
+import calmap
 
 # TODO : integrate bootstrap design library into layout
 
